@@ -1,4 +1,5 @@
-import { Component, useState } from 'react';
+//import { Component, useState } from 'react';
+import { useState } from 'react';
 import contacts from '../data/contacts.json';
 import { Container, Title, TitleList } from './App.styled';
 import { ContactList } from './ContactList/ContactList';
@@ -29,7 +30,7 @@ export function App() {
   };
 
   const handlerFilterChange = evt => {
-    console.log('evt.target.value', evt.target.value)
+    //console.log('evt.target.value', evt.target.value)
     setFilter(evt.target.value);
   };
 
