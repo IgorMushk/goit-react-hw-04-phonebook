@@ -36,12 +36,8 @@ export function App() {
   // };
 
   const deleteContact = id => {
-    setContactList((prevContactList)=>{
-      prevContactList.filter(contact => contact.id !== id)
-    })
-    // this.setState(prevState => ({
-    //   contactList: prevState.contactList.filter(contact => contact.id !== id),
-    // }));
+    //console.log(id)
+    setContactList(prevContactList=> prevContactList.filter(contact => contact.id !== id))
   };
 
   return (
