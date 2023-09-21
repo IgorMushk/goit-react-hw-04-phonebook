@@ -1,5 +1,5 @@
 //import { Component, useState } from 'react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import contacts from '../data/contacts.json';
 import { Container, Title, TitleList } from './App.styled';
 import { ContactList } from './ContactList/ContactList';
@@ -9,12 +9,19 @@ import { ContactForm } from './ContactForrm/ContactForm';
 import React from 'react';
 
 export function App() {
-  const [contactList, setContactList] = useState(contacts);
+  const [contactList, setContactList] = useState(() => {
+    console.log('Original station or fron local storage');
+    return JSON.parse(window.localStorage.getItem('contacts')) ?? contacts;
+  });
   const [filter, setFilter] = useState('');
 
-  // componentDidMount()
+  // componentDidMount
 
   // componentDidUpdate
+  useEffect(()=>{
+    console.log('Save locdl  storage');
+    window.localStorage.setItem('contacts', JSON.stringify(contactList));
+  },[contactList]);
 
   const setStateContacts = dataContact => {
     // Checking input ccontact in contactList
@@ -36,9 +43,11 @@ export function App() {
 
   const getFilteredContats = () => {
     //console.log('filter', filter);
-    const filteredContats =  contactList.filter(contact => contact.name.toLowerCase().includes(filter.toLowerCase()));
+    const filteredContats = contactList.filter(contact =>
+      contact.name.toLowerCase().includes(filter.toLowerCase())
+    );
     //console.log('---getFilteredContats', filteredContats);
-    return  filteredContats;
+    return filteredContats;
   };
 
   const deleteContact = id => {
