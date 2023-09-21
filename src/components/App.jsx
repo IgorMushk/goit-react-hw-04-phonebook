@@ -1,4 +1,3 @@
-//import { Component, useState } from 'react';
 import { useEffect, useState } from 'react';
 import contacts from '../data/contacts.json';
 import { Container, Title, TitleList } from './App.styled';
@@ -15,13 +14,10 @@ export function App() {
   });
   const [filter, setFilter] = useState('');
 
-  // componentDidMount
-
-  // componentDidUpdate
-  useEffect(()=>{
-    // console.log('Save locdl  storage');
+  useEffect(() => {
+    // console.log('Save local  storage');
     window.localStorage.setItem('contacts', JSON.stringify(contactList));
-  },[contactList]);
+  }, [contactList]);
 
   const setStateContacts = dataContact => {
     // Checking input ccontact in contactList
@@ -71,4 +67,3 @@ export function App() {
     </Container>
   );
 }
-
