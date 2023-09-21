@@ -10,7 +10,7 @@ export function ContactForm({ createContactItem }) {
   const [number, setNumber] = useState('');
 
   const handlerChange = evt => {
-    console.dir(evt.target.name);
+    //console.dir(evt.target.name);
     //console.dir(evt.target.value);
     const {name, value} = evt.target
     switch (name) {
