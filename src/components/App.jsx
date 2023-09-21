@@ -48,8 +48,6 @@ export function App() {
     );
   };
 
-  getFilteredContats();
-
   return (
     <Container>
       <Title>Phonebook</Title>
