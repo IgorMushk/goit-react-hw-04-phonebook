@@ -25,19 +25,29 @@ export function App() {
       return;
     }
 
-    setContactList(prevContactList => (
-      [...prevContactList, dataContact]
-    ));
+    setContactList(prevContactList => [...prevContactList, dataContact]);
   };
 
-  // const handlerFilterChange = evt => {
-  //   //console.log('evt.currentTarget.value', evt.currentTarget.value)
-  //   this.setState({ filter: evt.currentTarget.value });
-  // };
+  const handlerFilterChange = evt => {
+    console.log('evt.target.value', evt.target.value)
+    setFilter(evt.target.value);
+  };
+
+  //   getFilteredContats = () => {
+  //     const filter = this.state.filter.toLowerCase();
+  //     //console.log('filter', filter)
+  //     const filteredContats = this.state.contactList.filter(contact =>
+  //       contact.name.toLowerCase().includes(filter)
+  //     );
+  //     //console.log('filteredContats', filteredContats)
+  //     return filteredContats;
+  //   };
 
   const deleteContact = id => {
     //console.log(id)
-    setContactList(prevContactList=> prevContactList.filter(contact => contact.id !== id))
+    setContactList(prevContactList =>
+      prevContactList.filter(contact => contact.id !== id)
+    );
   };
 
   return (
@@ -45,10 +55,10 @@ export function App() {
       <Title>Phonebook</Title>
       <ContactForm createContactItem={setStateContacts} />
       <TitleList>Contacts</TitleList>
-      {/* <FilterByName
+      <FilterByName
         value={filter}
         onChange={handlerFilterChange}
-      /> */}
+      />
       <ContactList
         contacts={contactList}
         //contacts={this.getFilteredContats()}
