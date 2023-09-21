@@ -10,7 +10,7 @@ import React from 'react';
 
 export function App() {
   const [contactList, setContactList] = useState(() => {
-    console.log('Original station or fron local storage');
+    // console.log('Original station or read from local storage');
     return JSON.parse(window.localStorage.getItem('contacts')) ?? contacts;
   });
   const [filter, setFilter] = useState('');
@@ -19,7 +19,7 @@ export function App() {
 
   // componentDidUpdate
   useEffect(()=>{
-    console.log('Save locdl  storage');
+    // console.log('Save locdl  storage');
     window.localStorage.setItem('contacts', JSON.stringify(contactList));
   },[contactList]);
 
