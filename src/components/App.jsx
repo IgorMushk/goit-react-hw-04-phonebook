@@ -34,15 +34,12 @@ export function App() {
     setFilter(evt.target.value);
   };
 
-  //   getFilteredContats = () => {
-  //     const filter = this.state.filter.toLowerCase();
-  //     //console.log('filter', filter)
-  //     const filteredContats = this.state.contactList.filter(contact =>
-  //       contact.name.toLowerCase().includes(filter)
-  //     );
-  //     //console.log('filteredContats', filteredContats)
-  //     return filteredContats;
-  //   };
+  const getFilteredContats = () => {
+    //console.log('filter', filter);
+    const filteredContats =  contactList.filter(contact => contact.name.toLowerCase().includes(filter.toLowerCase()));
+    //console.log('---getFilteredContats', filteredContats);
+    return  filteredContats;
+  };
 
   const deleteContact = id => {
     //console.log(id)
@@ -51,18 +48,17 @@ export function App() {
     );
   };
 
+  getFilteredContats();
+
   return (
     <Container>
       <Title>Phonebook</Title>
       <ContactForm createContactItem={setStateContacts} />
       <TitleList>Contacts</TitleList>
-      <FilterByName
-        value={filter}
-        onChange={handlerFilterChange}
-      />
+      <FilterByName value={filter} onChange={handlerFilterChange} />
       <ContactList
-        contacts={contactList}
-        //contacts={this.getFilteredContats()}
+        //contacts={contactList}
+        contacts={getFilteredContats()}
         onDeleteContact={deleteContact}
       ></ContactList>
     </Container>
